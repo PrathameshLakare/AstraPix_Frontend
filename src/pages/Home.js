@@ -7,8 +7,8 @@ import Cookies from "js-cookie";
 export const Home = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  const token = Cookies.get("access_token") || "";
-  console.log(token);
+  const token = Cookies.get("access_token");
+  console.log("Token ", token);
 
   useEffect(() => {
     dispatch(fetchUserData());
