@@ -21,14 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<GoogleOauth />} />
         <Route path="/profile" element={<GoogleOauth />} />
-        <Route
-          path="/home"
-          element={
-            <Protected>
-              <Home />
-            </Protected>
-          }
-        />
+        <Route path="/home" element={<Home />} />
         <Route path="/create-album" element={<CreateAlbum />} />
         <Route path="/album/:albumId" element={<AlbumDetails />} />
         <Route path="/album/addImage/:albumId" element={<AddImage />} />
