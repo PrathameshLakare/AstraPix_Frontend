@@ -10,6 +10,7 @@ export const Home = () => {
   const token = Cookies.get("access_token");
   console.log("All cookies:", Cookies.get());
   console.log("Token ", token);
+  console.log(document.cookie);
 
   useEffect(() => {
     dispatch(fetchUserData());
