@@ -9,6 +9,7 @@ export const fetchUserData = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const token = Cookies.get("access_token") || "";
+      console.log(token);
       const response = await axios.get(`${url}/user/profile/google`, {
         headers: {
           Authorization: `Bearer ${token}`,

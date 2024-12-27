@@ -8,6 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/Navbar.jsx";
 import { SharedAlbums } from "./pages/SharedAlbums.js";
 import { AlbumsPage } from "./pages/AlbumsPage.js";
+import Protected from "./components/Protected.js";
 
 function App() {
   const location = useLocation();
@@ -20,7 +21,14 @@ function App() {
       <Routes>
         <Route path="/" element={<GoogleOauth />} />
         <Route path="/profile" element={<GoogleOauth />} />
-        <Route path="/home" element={<Home />} />
+        <Route
+          path="/home"
+          element={
+            <Protected>
+              <Home />
+            </Protected>
+          }
+        />
         <Route path="/create-album" element={<CreateAlbum />} />
         <Route path="/album/:albumId" element={<AlbumDetails />} />
         <Route path="/album/addImage/:albumId" element={<AddImage />} />
