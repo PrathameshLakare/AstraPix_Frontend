@@ -2,10 +2,13 @@ import { Link } from "react-router-dom";
 import { fetchUserData } from "../features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import Cookies from "js-cookie";
 
 export const Home = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
+  const token = Cookies.get("access_token") || "";
+  console.log(token);
 
   useEffect(() => {
     dispatch(fetchUserData());
