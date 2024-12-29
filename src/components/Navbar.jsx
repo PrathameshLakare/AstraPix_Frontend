@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
-import Cookies from "js-cookie";
+import axios from "axios";
 
 export const Navbar = () => {
-  const logoutHandler = () => {
-    Cookies.remove("access_token");
+  const handleLogout = async () => {
+    try {
+      await axios.post(
+        `${process.env.REACT_APP_SERVER_BASE_URL}/logout`,
+        {},
+        { withCredentials: true }
+      );
+      window.location.href = "/";
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
   };
 
   return (
@@ -47,8 +56,7 @@ export const Navbar = () => {
               </Link>
               <Link
                 className="nav-link text-danger fw-semibold"
-                to="/"
-                onClick={logoutHandler}
+                onClick={handleLogout}
               >
                 Logout
               </Link>

@@ -8,7 +8,6 @@ import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/Navbar.jsx";
 import { SharedAlbums } from "./pages/SharedAlbums.js";
 import { AlbumsPage } from "./pages/AlbumsPage.js";
-import Protected from "./components/Protected.js";
 
 function App() {
   const location = useLocation();
