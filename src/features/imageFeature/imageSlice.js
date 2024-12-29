@@ -1,18 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 const url = process.env.REACT_APP_SERVER_BASE_URL;
 
 export const fetchImages = createAsyncThunk(
   "fetch/images",
   async ({ albumId, tags }) => {
-    const token = Cookies.get("access_token") || "";
     const response = await axios.get(`${url}/albums/${albumId}/images`, {
       params: tags ? { tags } : {},
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      withCredentials: true,
     });
     return response.data;
   }
@@ -21,14 +17,11 @@ export const fetchImages = createAsyncThunk(
 export const postImage = createAsyncThunk(
   "post/images",
   async ({ albumId, imageData }, { rejectWithValue }) => {
-    const token = Cookies.get("access_token") || "";
     const response = await axios.post(
       `${url}/albums/${albumId}/images`,
       imageData,
       {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        withCredentials: true,
       }
     );
     return response.data;
@@ -38,14 +31,11 @@ export const postImage = createAsyncThunk(
 export const favoriteImage = createAsyncThunk(
   "post/images/favorite",
   async ({ albumId, imageId }) => {
-    const token = Cookies.get("access_token") || "";
     const response = await axios.put(
       `${url}/albums/${albumId}/images/${imageId}/favorite`,
       {},
       {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        withCredentials: true,
       }
     );
     return response.data;
@@ -55,13 +45,10 @@ export const favoriteImage = createAsyncThunk(
 export const deleteImage = createAsyncThunk(
   "delete/image",
   async ({ albumId, imageId }) => {
-    const token = Cookies.get("access_token") || "";
     const response = await axios.delete(
       `${url}/albums/${albumId}/images/${imageId}`,
       {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        withCredentials: true,
       }
     );
     return response.data;
@@ -71,15 +58,11 @@ export const deleteImage = createAsyncThunk(
 export const addComment = createAsyncThunk(
   "post/image/comments",
   async ({ albumId, imageId, comment }) => {
-    const token = Cookies.get("access_token") || "";
-
     const response = await axios.put(
       `${url}/albums/${albumId}/images/${imageId}/comments`,
       comment,
       {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        withCredentials: true,
       }
     );
     return response.data;

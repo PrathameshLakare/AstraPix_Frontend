@@ -1,15 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 const url = process.env.REACT_APP_SERVER_BASE_URL;
 
 export const fetchAlbums = createAsyncThunk("/fetch/album", async () => {
-  const token = Cookies.get("access_token") || "";
   const response = await axios.get(`${url}/albums`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
+    withCredentials: true,
   });
 
   return response.data;
@@ -18,22 +14,16 @@ export const fetchAlbums = createAsyncThunk("/fetch/album", async () => {
 export const fetchAlbumDetails = createAsyncThunk(
   "album/fetchAlbumDetails",
   async (albumId) => {
-    const token = Cookies.get("access_token") || "";
     const response = await axios.get(`${url}/albums/${albumId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      withCredentials: true,
     });
     return response.data;
   }
 );
 
 export const postAlbum = createAsyncThunk("/post/album", async (newAlbum) => {
-  const token = Cookies.get("access_token") || "";
   const response = await axios.post(`${url}/albums`, newAlbum, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
+    withCredentials: true,
   });
 
   return response.data;
@@ -42,11 +32,8 @@ export const postAlbum = createAsyncThunk("/post/album", async (newAlbum) => {
 export const updateAlbum = createAsyncThunk(
   "/update/album",
   async ({ albumId, albumData }) => {
-    const token = Cookies.get("access_token") || "";
     const response = await axios.put(`${url}/albums/${albumId}`, albumData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      withCredentials: true,
     });
 
     return response.data;
@@ -57,14 +44,11 @@ export const addSharedUsers = createAsyncThunk(
   "/post/album/add/sharedUsers",
   async ({ albumId, emails }, { rejectWithValue }) => {
     try {
-      const token = Cookies.get("access_token") || "";
       const response = await axios.post(
         `${url}/albums/${albumId}/share`,
         { emails },
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          withCredentials: true,
         }
       );
 
@@ -82,11 +66,8 @@ export const addSharedUsers = createAsyncThunk(
 export const fetchSharedAlbums = createAsyncThunk(
   "/fetch/shared/albums",
   async () => {
-    const token = Cookies.get("access_token") || "";
     const response = await axios.get(`${url}/albums/shared`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      withCredentials: true,
     });
 
     return response.data;
@@ -96,11 +77,8 @@ export const fetchSharedAlbums = createAsyncThunk(
 export const deleteAlbumById = createAsyncThunk(
   "/delete/albums",
   async (albumId) => {
-    const token = Cookies.get("access_token") || "";
     const response = await axios.delete(`${url}/albums/${albumId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      withCredentials: true,
     });
 
     return response.data;

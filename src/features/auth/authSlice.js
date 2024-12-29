@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 const url = process.env.REACT_APP_SERVER_BASE_URL;
 
@@ -8,12 +7,7 @@ export const fetchUserData = createAsyncThunk(
   "/auth/user",
   async (_, { rejectWithValue }) => {
     try {
-      const token = Cookies.get("access_token") || "";
-      console.log(token);
       const response = await axios.get(`${url}/user/profile/google`, {
-        headers: {
-          Authorization: `Bearer ${Cookies.get("access_token")}`,
-        },
         withCredentials: true,
       });
 
