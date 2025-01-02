@@ -10,12 +10,9 @@ const Protected = ({ Component }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const actionResult = await dispatch(fetchUserData());
-        if (actionResult && actionResult.payload) {
-          setIsAuthenticated(true);
-        } else {
-          setIsAuthenticated(false);
-        }
+        const response = await dispatch(fetchUserData()).unwrap();
+        console.log(response);
+        setIsAuthenticated(!!response);
       } catch (error) {
         setIsAuthenticated(false);
       }
