@@ -12,7 +12,9 @@ const Protected = ({ Component }) => {
       try {
         const response = await dispatch(fetchUserData()).unwrap();
         console.log(response);
-        setIsAuthenticated(!!response);
+        if (response.user) {
+          setIsAuthenticated(true);
+        }
       } catch (error) {
         setIsAuthenticated(false);
       }
