@@ -9,7 +9,7 @@ export const GoogleOauth = () => {
 
   return (
     <div className="bg-dark text-white min-vh-100 d-flex flex-column justify-content-center align-items-center">
-      <h1 className="mb-4 text-center">Welcome to KaviosPix</h1>
+      <h1 className="mb-4 text-center">Welcome to AstraPix</h1>
       <div className="d-flex justify-content-center">
         <button
           onClick={() => authenticateViaOAuth("google")}
