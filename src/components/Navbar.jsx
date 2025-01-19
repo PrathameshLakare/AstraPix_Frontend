@@ -20,7 +20,7 @@ export const Navbar = () => {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark py-3">
         <div className="container">
           <Link className="navbar-brand fw-bold fs-4" to="/home">
-            KaviosPix
+            AstraPix
           </Link>
 
           <button
