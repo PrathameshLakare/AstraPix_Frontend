@@ -119,9 +119,9 @@ const ImageCard = ({ image, sharedAlbum }) => {
                       >
                         <div>
                           <p className="mb-1">
-                            <strong>{comment.user.name}</strong>{" "}
+                            <strong>{comment?.user?.name}</strong>{" "}
                             <small className="text-muted">
-                              ({new Date(comment.createdAt).toLocaleString()})
+                              ({new Date(comment?.createdAt).toLocaleString()})
                             </small>
                           </p>
                           <p className="mb-0 text-muted">{comment.text}</p>
