@@ -112,7 +112,7 @@ const ImageCard = ({ image, sharedAlbum }) => {
                     className="comment-section overflow-auto"
                     style={{ maxHeight: "200px" }}
                   >
-                    {comments.map((comment, index) => (
+                    {comments?.map((comment, index) => (
                       <div
                         key={index}
                         className="d-flex align-items-start border-bottom py-2"
