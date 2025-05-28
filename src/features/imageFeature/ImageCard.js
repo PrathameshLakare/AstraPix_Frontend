@@ -107,7 +107,7 @@ const ImageCard = ({ image, sharedAlbum }) => {
               </p>
               <div className="card-text mt-4">
                 <h6 className="fw-bold">Comments</h6>
-                {comments.length > 0 ? (
+                {comments?.length > 0 ? (
                   <div
                     className="comment-section overflow-auto"
                     style={{ maxHeight: "200px" }}
