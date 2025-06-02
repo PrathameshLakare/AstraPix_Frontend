@@ -105,11 +105,11 @@ const AlbumDetails = () => {
 
         <div className="row mt-4">
           {sortedImages.length > 0 ? (
-            sortedImages.map((image) => (
+            sortedImages?.map((image) => (
               <ImageCard
                 key={image._id}
                 image={image}
-                sharedAlbum={location.state.isSharedAlbum}
+                sharedAlbum={location?.state?.isSharedAlbum}
               />
             ))
           ) : (
