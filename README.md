@@ -39,7 +39,7 @@ npm start
 ## Demo Video
 
 Watch a walkthrough (5–7 minutes) of all major features of this app:  
-[Loom Video Link]()
+[Loom Video Link](https://www.youtube.com/watch?v=0vCQZDOyhOo)
 
 ## Features
 
